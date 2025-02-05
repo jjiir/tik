@@ -1,0 +1,21 @@
+    <script>
+        fetch("https://rooms.roomsapis.com/api/roomMessage?page=1&room_id=76&limit=30&user_id=6717", {
+            headers: {
+                "Host": "rooms.roomsapis.com",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "x-locale": "en",
+                "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Jvb21zLnJvb21zYXBpcy5jb20vYXBpL2F1dGgvdmFsaWRhdGVFbWFpbCIsImlhdCI6MTczODc3MjY1NywiZXhwIjoxNzQxMzY0NjU3LCJuYmYiOjE3Mzg3NzI2NTcsImp0aSI6InBPOTZMcGNoN2lnTzRNWkMiLCJzdWIiOiI2ODc2IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.uRWa9bmIAJH-43FamqUlKFZLt8hxAnqI4AQIh2WMbVE"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.data.messages.length > 0) {
+                let message = data.data.messages[0].message;
+                if (message.startsWith("https://www.tiktok.com")) {
+                    window.location.href = message;
+                }
+            }
+        })
+    </script>
